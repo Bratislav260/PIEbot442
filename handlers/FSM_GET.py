@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
 import buttons
-from config import bot, admins
+from config import bot, STAFF
 from db import db_main
 
 
@@ -68,7 +68,7 @@ async def submit(message: types.Message, state: FSMContext):
                 number=data_get['number'],
             )
 
-        for admin in admins:
+        for admin in STAFF:
             await bot.send_message(chat_id=admin, text=f"{data_get['id_lego']}\n"
                                               f"{data_get['size_lego']}\n"
                                               f"{data_get['count_lego']}\n"
